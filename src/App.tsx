@@ -4,13 +4,25 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import Project from './models/project.ts';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleDown } from '@fortawesome/free-regular-svg-icons';
-import { motion } from 'framer-motion';
 import { Button } from "./components/ui/button.tsx";
+import AboutMe from "./AboutMe.tsx";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const bodyStyleStr = "bg-gray-800 bg-radial from-gray-800 from-0% to-gray-900 to-70% w-full h-full text-white px-30 py-10";
+    const bodyStyle = bodyStyleStr.split(/\s+/);
+    bodyStyle.forEach(
+      (e) => document.body.classList.add(e)
+    )
+    return () => {
+      bodyStyle.forEach(
+        (e) => document.body.classList.remove(e)
+      )
+    }
+  }, [])
+
+
   // colors
   const primary: string = 'text-red-400';
 
@@ -27,8 +39,23 @@ function App() {
 
   }
 
+  const reshuffled: Array<string> = [];
+  for (const arr of Object.values(skills)) {
+    const completed: Array<number> = [];
+    const maxInd = arr.length;
+    const getRand = () => Math.floor(Math.random() * maxInd);
+    for (let i = 0; i < maxInd; i++) {
+      let rand: number = getRand();
+      while (completed.some((e) => e == rand)) {
+        rand = getRand();
+      }
+      reshuffled.push(arr[rand]);
+      completed.push(rand);
+    }
+  }
+
   return (
-    <div className="bg-gray-800 bg-radial from-gray-800 from-0% to-gray-900 to-70% w-full h-full absolute text-white px-30 py-10">
+    <>
       <div className="flex justify-between w-full">
         <h1 className="text-2xl font-bold">Willow Diamada</h1>
         <NavigationMenu>
@@ -49,7 +76,7 @@ function App() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div className="row-auto my-10">
+      <div className="grid grid-cols-[auto_auto] gap-10 my-10">
         <div className="col">
           <h3 className="block text-4xl pb-5 font-bold">Hello <span className={`${primary} text-6xl`}>.</span></h3>
           <div className="flex align-bottom pb-5">
@@ -62,26 +89,19 @@ function App() {
             <Button>My resume</Button>
           </div>
         </div>
-        <div className="col"></div>
+        <div className="col">
+          <p className="h-100% w-100%">{'< My face here >'}</p>
+        </div>
       </div>
-      <div className="flex justify-around">
-        <motion.div className="inline-block" animate={{
-          y: [0, 20, 0],
-          scale: [1, 1.1, 1],
-        }}
-          transition={
-            {
-              duration: 0.8,
-              repeat: Infinity,
-              repeatType: "loop",
-              repeatDelay: 2,
-              ease: 'easeInOut'
-            }
-          }>
-          <FontAwesomeIcon icon={faArrowAltCircleDown} size="3x" />
-        </motion.div>
+      <div className="flex justify-center bg-gray-800 w-100% left-0 right-0">
+        <ul className="flex gap-8 list-none text-2xl opacity-30 py-5">
+          {reshuffled.map((item, index) => <li id={`strip-item-${index}`}>
+            {item}
+          </li>)}
+        </ul>
       </div>
-    </div>
+      <AboutMe />
+    </>
   );
 }
 
