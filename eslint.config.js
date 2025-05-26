@@ -1,31 +1,38 @@
 import js from "@eslint/js";
 import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
-import prettierConfig from "eslint-config-prettier";
+import pluginReact from "eslint-plugin-react";
+import prettierEslintReco from "eslint-plugin-prettier/recommended";
+import prettierEslintConfig from "eslint-config-prettier/flat";
+import { defineConfig } from "eslint/config";
 
-export default tseslint.config(
-  { ignores: ["dist"] },
+export default defineConfig([
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,prettierConfig],
-    files: ["**/*.{ts,tsx}"],
+    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+    plugins: { js, pluginReact }, //copied from eslint-react plugin
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      //copied from eslint-react plugin
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+      },
     },
-    plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+    settings: {
+      // needed to suppress eslint warning
+      react: {
+        version: "detect",
+      },
     },
   },
-);
+  js.configs.recommended, // from eslint
+  tseslint.configs.strict, // for better type configuration, eslint typescript
+  tseslint.configs.stylistic,
+  pluginReact.configs.flat.recommended, // eslint-react
+  pluginReact.configs.flat["jsx-runtime"], // add for newer versions
+  prettierEslintReco, // prettier eslint formatting (any prettier should go last)
+  prettierEslintConfig, // remove conflict between eslint and prettier's rules (should be very last)
+]);
