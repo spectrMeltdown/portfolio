@@ -26,6 +26,11 @@ function AboutMe() {
           language of the computer and how developers express that though coding
           and software development.
         </p>
+        <div className="flex gap-5">
+          <div className="col-auto"></div>
+          <div className="col-auto"></div>
+          <div className="col-auto"></div>
+        </div>
       </div>
     </div>
   );

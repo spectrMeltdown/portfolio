@@ -9,17 +9,15 @@ import AboutMe from "./AboutMe.tsx";
 import { useEffect } from "react";
 
 function App() {
-  const bodyPx = "50";
-  const bodyPy = "10";
-
   useEffect(() => {
-    const bodyStyleStr = `bg-radial from-gray-800 from-0% to-gray-900 to-70% text-white px-${bodyPx} py-${bodyPy}`;
+    const bodyStyleStr = `bg-radial from-gray-800 from-0% to-gray-900 to-70% text-white px-20 py-10`;
     const bodyStyle = bodyStyleStr.split(/\s+/);
+
     bodyStyle.forEach((e) => document.body.classList.add(e));
     return () => {
       bodyStyle.forEach((e) => document.body.classList.remove(e));
     };
-  }, [bodyPx, bodyPy]);
+  }, []);
 
   // data
   const skills: Record<string, string[]> = {
