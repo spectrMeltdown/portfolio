@@ -1,8 +1,9 @@
+```js
 {
-  "name": "developer-portfolio",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "developer-portfolio", // make it url safe, esp. for publishing
+  "private": true, // prevents publishing the package
+  "version": "0.0.0", // parsable by node-semver
+  "type": "module", // using ES Modules (ECMA Script modules) which are newer. Legacy is Commonjs
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -13,7 +14,6 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@radix-ui/react-navigation-menu": "^1.2.13",
     "@radix-ui/react-slot": "^1.2.2",
@@ -53,3 +53,4 @@
     "vite": "^6.3.5"
   }
 }
+```

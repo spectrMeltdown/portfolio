@@ -9,18 +9,17 @@ import AboutMe from "./AboutMe.tsx";
 import { useEffect } from "react";
 
 function App() {
+  const bodyPx = "50";
+  const bodyPy = "10";
+
   useEffect(() => {
-    const bodyStyleStr =
-      "bg-gray-800 bg-radial from-gray-800 from-0% to-gray-900 to-70% w-full h-full text-white px-30 py-10";
+    const bodyStyleStr = `bg-radial from-gray-800 from-0% to-gray-900 to-70% text-white px-${bodyPx} py-${bodyPy}`;
     const bodyStyle = bodyStyleStr.split(/\s+/);
     bodyStyle.forEach((e) => document.body.classList.add(e));
     return () => {
       bodyStyle.forEach((e) => document.body.classList.remove(e));
     };
-  }, []);
-
-  // colors
-  const primary = "text-red-400";
+  }, [bodyPx, bodyPy]);
 
   // data
   const skills: Record<string, string[]> = {
@@ -36,7 +35,7 @@ function App() {
   const reshuffled: string[] = [];
   for (const arr of Object.values(skills)) {
     const completed: number[] = [];
-    const maxInd = arr.length;
+    const maxInd = arr.length <= 12 ? arr.length : 12;
     const getRand = () => Math.floor(Math.random() * maxInd);
     for (let i = 0; i < maxInd; i++) {
       let rand: number = getRand();
@@ -73,7 +72,7 @@ function App() {
       <div className="my-10 grid grid-cols-[auto_auto] gap-10">
         <div className="col">
           <h3 className="block pb-5 text-4xl font-bold">
-            Hello <span className={`${primary} text-6xl`}>.</span>
+            Hello <span className="text-6xl text-primary">.</span>
           </h3>
           <div className="flex pb-5 align-bottom">
             {/* <div className={`${primary} absolute left-0 pt-4 font-extrabold`}>____________________</div> */}
@@ -81,7 +80,7 @@ function App() {
               &nbsp;&nbsp;&nbsp;&nbsp;I&apos;m Willow
             </h3>
           </div>
-          <h2 className="block text-5xl font-bold">A Software Developer</h2>
+          <h2 className="block text-5xl font-bold">Software Developer</h2>
           <div className="flex gap-2 px-5 py-10">
             <Button className="" variant="outline">
               Got a project?
@@ -93,11 +92,22 @@ function App() {
           <p className="h-100% w-100%">{"< My face here >"}</p>
         </div>
       </div>
-      <div className="w-100% right-0 left-0 flex justify-center bg-gray-800">
-        <ul className="flex list-none gap-8 py-5 text-2xl opacity-30">
-          {reshuffled.map((item, index) => (
-            <li id={`strip-item-${index}`}>{item}</li>
-          ))}
+      <div
+        className="flex justify-center bg-gradient-to-r from-gray-800 to-gray-700 opacity-70"
+        style={{
+          marginLeft: `-10%`,
+          marginRight: "-10%",
+        }}
+      >
+        <ul className="flex list-none gap-8 py-5 text-2xl opacity-50">
+          {reshuffled.map((item, index) => {
+            const key = `strip-item-${index}`;
+            return (
+              <li key={key} id={key} className="text-lg">
+                {item}
+              </li>
+            );
+          })}
         </ul>
       </div>
       <AboutMe />
