@@ -33,7 +33,7 @@ function App() {
   const reshuffled: string[] = [];
   for (const arr of Object.values(skills)) {
     const completed: number[] = [];
-    const maxInd = arr.length <= 12 ? arr.length : 12;
+    const maxInd = arr.length <= 10 ? arr.length : 10;
     const getRand = () => Math.floor(Math.random() * maxInd);
     for (let i = 0; i < maxInd; i++) {
       let rand: number = getRand();
@@ -90,14 +90,8 @@ function App() {
           <p className="h-100% w-100%">{"< My face here >"}</p>
         </div>
       </div>
-      <div
-        className="flex justify-center bg-gradient-to-r from-gray-800 to-gray-700 opacity-70"
-        style={{
-          marginLeft: `-10%`,
-          marginRight: "-10%",
-        }}
-      >
-        <ul className="flex list-none gap-8 py-5 text-2xl opacity-50">
+      <div className="mx-[-5rem] flex justify-center bg-gradient-to-r from-gray-800 to-gray-700 opacity-70">
+        <ul className="flex list-none gap-8 overflow-hidden py-5 text-2xl opacity-50">
           {reshuffled.map((item, index) => {
             const key = `strip-item-${index}`;
             return (
