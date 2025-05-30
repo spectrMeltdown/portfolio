@@ -7,10 +7,11 @@ import {
 import { Button } from "./components/ui/button.tsx";
 import AboutMe from "./AboutMe.tsx";
 import { useEffect } from "react";
+import Projects from "./Projects.tsx";
 
 function App() {
   useEffect(() => {
-    const bodyStyleStr = `bg-radial from-gray-800 from-0% to-gray-900 to-70% text-white px-20 py-10`;
+    const bodyStyleStr = `bg-radial from-gray-800 from-0% to-gray-900 to-70% text-white px-25 py-10`;
     const bodyStyle = bodyStyleStr.split(/\s+/);
 
     bodyStyle.forEach((e) => document.body.classList.add(e));
@@ -27,8 +28,6 @@ function App() {
     database: ["MySQL", "Firestore"],
     general: ["Git", "Github", "NodeJS", "Firebase", "Figma"],
   };
-
-  const projects: object = {};
 
   const reshuffled: string[] = [];
   for (const arr of Object.values(skills)) {
@@ -103,6 +102,8 @@ function App() {
         </ul>
       </div>
       <AboutMe />
+      <Projects />
+      <Projects />
     </>
   );
 }
