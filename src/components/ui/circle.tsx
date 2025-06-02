@@ -1,5 +1,16 @@
-export default function UICircle() {
+import clsx from "clsx";
+
+export default function UICircle({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   return (
-    <div className="mx-[0.22rem] my-2 size-2 rounded-full bg-primary pr-1"></div>
+    <div
+      className={clsx(
+        "mx-[0.22rem] my-2 size-2 rounded-full bg-primary pr-1",
+        className,
+      )}
+      {...props}
+    ></div>
   );
 }
