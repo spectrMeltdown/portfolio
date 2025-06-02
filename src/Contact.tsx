@@ -40,9 +40,7 @@ function Contact() {
           <Button>Submit</Button>
         </div>
         <div className="col-auto gap-y-3">
-          <Form {...form}>
-            <FormField></FormField>
-          </Form>
+          <Form {...form}>{/* <FormField></FormField> */}</Form>
         </div>
       </div>
     </div>

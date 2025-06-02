@@ -8,6 +8,8 @@ import { Button } from "./components/ui/button.tsx";
 import AboutMe from "./AboutMe.tsx";
 import { useEffect } from "react";
 import Projects from "./Projects.tsx";
+import Contact from "./Contact.tsx";
+import Footer from "./Footer.tsx";
 
 function App() {
   useEffect(() => {
@@ -89,7 +91,7 @@ function App() {
           <p className="h-100% w-100%">{"< My face here >"}</p>
         </div>
       </div>
-      <div className="mx-[-5rem] flex justify-center bg-gradient-to-r from-gray-800 to-gray-700 opacity-70">
+      <div className="mx-[-6.2rem] flex justify-center bg-gradient-to-r from-gray-800 to-gray-700 opacity-70">
         <ul className="flex list-none gap-8 overflow-hidden py-5 text-2xl opacity-50">
           {reshuffled.map((item, index) => {
             const key = `strip-item-${index}`;
@@ -103,7 +105,8 @@ function App() {
       </div>
       <AboutMe />
       <Projects />
-      <Projects />
+      <Contact />
+      <Footer />
     </>
   );
 }

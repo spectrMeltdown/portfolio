@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import {
   faMobile,
-  faLaptop,
+  faDesktop,
   faTablet,
 } from "@fortawesome/free-solid-svg-icons";
 import Circle from "./components/ui/circle";
@@ -47,12 +47,12 @@ function Lines() {
       className={`${stack ? `mt-[0.7rem] ml-5 rounded-[3px] border-[0.12rem] border-gray-800 bg-gray-800` : "pr-3"}`}
     />
   );
-  const laptopIcon = <FontAwesomeIcon icon={faLaptop} size={"2x"} />;
+  const laptopIcon = <FontAwesomeIcon icon={faDesktop} size={"2x"} />;
   const tabletIcon = ({ stack = false }: { stack: boolean }) => (
     <FontAwesomeIcon
       icon={faTablet}
       size={stack ? "xl" : "2xl"}
-      className={`${stack ? "mt-[0.5rem] ml-[-3rem] rounded-[3px] border-[0.12rem] border-gray-800 bg-gray-800" : ""}`}
+      className={`${stack ? "mt-[0.5rem] mr-[0.5rem] ml-[-3.3rem] rounded-[3px] border-[0.12rem] border-gray-800 bg-gray-800" : ""}`}
     />
   );
   return (
@@ -72,7 +72,7 @@ function Lines() {
       </Line>
       <Circle />
       <Line>
-        <div className="flex">
+        <div className="flex scale-75">
           {laptopIcon}
           {tabletIcon({ stack: true })}
           {mobileIcon({ stack: true })}
