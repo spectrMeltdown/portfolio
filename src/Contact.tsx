@@ -27,7 +27,7 @@ function Contact() {
   }
 
   return (
-    <div className="col-auto gap-y-5">
+    <div className="col-auto gap-y-5" id="contact">
       <div className="flex gap-y-3">
         <span className="text-primary">_______________</span>
         <h2 className="text-xl">Contacts</h2>

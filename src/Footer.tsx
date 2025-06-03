@@ -8,10 +8,10 @@ import clsx from "clsx";
 
 export default Footer;
 
-type Link = {
+interface Link {
   icon: IconDefinition;
   link: string;
-};
+}
 
 function Footer() {
   const logos: Link[] = [

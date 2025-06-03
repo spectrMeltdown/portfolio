@@ -1,10 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
-import {
-  faMobile,
-  faLaptop,
-  faTablet,
-} from "@fortawesome/free-solid-svg-icons";
 import Line from "./components/ui/line";
 import Circle from "./components/ui/circle";
 import type ProjectType from "./types/project";
@@ -26,7 +19,8 @@ function Projects() {
     },
     {
       name: "Block-Logic",
-      description: "An admin portal for managing the game Block-Logic",
+      description:
+        "A visual block-based programming game on mobile designed to aid beginners and novices in programming to increase their understanding of how it all works, and to have fun as well! App is available on Android only. Also has a web-based admin portal for managing the platform.",
       tech: ["Flutter", "Firebase"],
       previewUrl: "",
       link: "https://block-logic.site",
@@ -43,12 +37,12 @@ function Projects() {
     },
   ];
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center" id="projects">
       <h2 className="mb-5 text-5xl font-bold">Projects</h2>
       <Line isFlex="nonFlex" />
       <Circle className="mr-[0.31rem]" />
       {projects.map((v, i) => (
-        <Project key={clsx(v, i)} project={v} />
+        <Project key={clsx(v, i)} project={v} index={i} />
       ))}
     </div>
   );
