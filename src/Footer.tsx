@@ -1,21 +1,41 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import {
+  faEnvelope,
+  type IconDefinition,
+} from "@fortawesome/free-regular-svg-icons";
+import clsx from "clsx";
 
 export default Footer;
 
+type Link = {
+  icon: IconDefinition;
+  link: string;
+};
+
 function Footer() {
+  const logos: Link[] = [
+    { icon: faEnvelope, link: "mailto:wddiamada@gmail.com" },
+    { icon: faGithub, link: "https://github.com/spectrMeltdown" },
+    { icon: faLinkedin, link: "" },
+  ];
   return (
-    <div className="grid grid-cols-[50%_50%] py-20">
-      <div className="col-auto">
-        <h2 className="mb-5 text-4xl font-bold">Willow D. Diamada</h2>
-        <p>
-          My passion for software development started from my desire to
-          customize my home computer. I loved tinkering with OS and underlying
-          hardware, and since then, I developed a passion for learning the
-          language of the computer and how developers express that though coding
-          and software development.
-        </p>
+    <div className="mx-[-6.2vw] mb-[-3vw] flex justify-center bg-gray-700 py-[4rem] text-center align-middle">
+      <div className="flex flex-col gap-y-3">
+        <h2 className="text-4xl font-bold">Willow Diamada</h2>
+        <p>{"Designed with love, all rights reserved."}</p>
+        <div className="flex justify-center gap-5">
+          {logos.map((v, i) => (
+            <a
+              target="_blank"
+              rel="noreferrer"
+              key={clsx(i, "link")}
+              href={v.link}
+            >
+              <FontAwesomeIcon key={clsx(i, "icon")} icon={v.icon} size="3x" />
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

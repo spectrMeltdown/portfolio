@@ -9,6 +9,7 @@ import Line from "./components/ui/line";
 import Circle from "./components/ui/circle";
 import type ProjectType from "./types/project";
 import Project from "./components/ui/project";
+import clsx from "clsx";
 
 export default Projects;
 
@@ -46,8 +47,8 @@ function Projects() {
       <h2 className="mb-5 text-5xl font-bold">Projects</h2>
       <Line isFlex="nonFlex" />
       <Circle className="mr-[0.31rem]" />
-      {projects.map((proj) => (
-        <Project key={proj.name} project={proj} />
+      {projects.map((v, i) => (
+        <Project key={clsx(v, i)} project={v} />
       ))}
     </div>
   );
