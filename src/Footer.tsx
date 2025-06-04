@@ -20,7 +20,7 @@ function Footer() {
     { icon: faLinkedin, link: "" },
   ];
   return (
-    <div className="mx-[-6.2vw] mb-[-3vw] flex justify-center bg-gray-700 py-[4rem] text-center align-middle">
+    <div className="mx-[-6.2rem] mb-[-3rem] flex justify-center bg-gray-700 py-[4rem] text-center align-middle">
       <div className="flex flex-col gap-y-3">
         <h2 className="text-4xl font-bold">Willow Diamada</h2>
         <p>{"Designed with love, all rights reserved."}</p>

@@ -24,9 +24,10 @@ function AboutMe() {
         <p>
           My passion for software development started from my desire to
           customize my home computer. I loved tinkering with OS and underlying
-          hardware, and since then, I developed a passion for learning the
-          language of the computer and how developers express that though coding
-          and software development.
+          hardware when I was young. Later in life, I developed a passion for
+          learning the language and logic of the computer, solving problems and
+          figuring out how to express that though coding and software
+          development.
         </p>
       </div>
     </div>
@@ -34,13 +35,7 @@ function AboutMe() {
 }
 
 function Lines() {
-  const mobileIcon = ({
-    stack = false,
-    gap = "ml-[0.8rem]",
-  }: {
-    stack?: boolean;
-    gap?: string;
-  }) => (
+  const mobileIcon = ({ stack = false }: { stack?: boolean; gap?: string }) => (
     <FontAwesomeIcon
       icon={faMobile}
       size={stack ? "lg" : "2xl"}
