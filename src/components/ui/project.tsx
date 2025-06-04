@@ -23,7 +23,7 @@ export default function Project({
       {...props}
     >
       <div className="flex w-[40rem] flex-col gap-2">
-        <h2 className="text-2xl font-bold">{project.name}</h2>
+        <h2 className="pb-4 text-2xl font-bold">{project.name}</h2>
         <div className="row flex gap-x-2 pb-4">
           {project.tech.map((e) => (
             <Squicle key={e}>{e}</Squicle>
@@ -46,7 +46,7 @@ export default function Project({
       </div>
       <div className="h-80 w-[40rem] text-center">
         <img
-          className="h-full w-full border-2 border-amber-400 object-cover"
+          className="h-full w-full border-2 border-white object-cover"
           src={project.previewUrl}
           alt={"No preview available"}
         />
@@ -63,7 +63,7 @@ function Squicle({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={clsx("rounded-[20px] bg-gray-800 px-5 py-2", className, {
+      className={clsx("rounded-[20px] bg-blue-900 px-5 py-2", className, {
         ...props,
       })}
     >
