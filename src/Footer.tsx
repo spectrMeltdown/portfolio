@@ -17,7 +17,10 @@ function Footer() {
   const logos: Link[] = [
     { icon: faEnvelope, link: "mailto:wddiamada@gmail.com" },
     { icon: faGithub, link: "https://github.com/spectrMeltdown" },
-    { icon: faLinkedin, link: "" },
+    {
+      icon: faLinkedin,
+      link: "https://www.linkedin.com/in/willow-diamada-2b1772369",
+    },
   ];
   return (
     <div className="mx-[-6.2rem] mb-[-3rem] flex justify-center bg-gray-700 py-[4rem] text-center align-middle">

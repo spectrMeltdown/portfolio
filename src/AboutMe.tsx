@@ -17,7 +17,7 @@ function AboutMe() {
   //   ["Cross-platform", "developer.svg"],
   // ]);
   return (
-    <div className="grid grid-cols-[50%_50%] px-10 py-20">
+    <div className="grid grid-cols-[50%_50%] px-20 py-20">
       <Lines />
       <div className="col-auto">
         <h2 className="mb-5 text-4xl font-bold">About me</h2>
@@ -58,7 +58,7 @@ function Lines() {
           size={"2xl"}
           className="pr-3 pl-1"
         />
-        {"Website Development"}
+        {"Web Development"}
       </Line>
       <Circle />
       <Line>
