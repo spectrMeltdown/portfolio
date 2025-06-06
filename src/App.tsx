@@ -103,7 +103,7 @@ function App() {
         <div className="relative mb-[-2.5rem] h-100 w-100">
           <img
             className="h-100"
-            src="@/assets/me.webp"
+            src={"@/assets/me.webp"}
             alt="picture of me"
             height="50px"
           />
