@@ -18,8 +18,10 @@ function AboutMe() {
   // ]);
   return (
     <div className="grid grid-cols-[50%_50%] px-20 py-20">
-      <Lines />
-      <div className="col-auto">
+      <div id="skills">
+        <Lines />
+      </div>
+      <div className="col-auto" id="aboutMe">
         <h2 className="mb-5 text-4xl font-bold">About me</h2>
         <p>
           My passion for software development started from my desire to

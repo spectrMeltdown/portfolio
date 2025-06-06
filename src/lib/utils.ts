@@ -1,8 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { EmailType } from "./types";
+import type { ContactFormData } from "./types";
 import * as emailjs from "@emailjs/browser";
-import { toEmailJSParams } from "./helpers";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -28,19 +27,25 @@ function getProjPreviews(): Record<string, string[]> {
   return result;
 }
 
-function sendEmail(email: EmailType): void {
+export async function sendEmail(email: ContactFormData): Promise<boolean> {
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-  const templateId = import.meta.env.import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-  emailjs
-    .send(serviceId, templateId, toEmailJSParams(email), {
-      publicKey: publicKey,
-    })
-    .then(() => {
-      console.log("success");
-    })
-    .catch((e) => {
-      console.error(e);
-    });
+  console.log(`${serviceId} + ${publicKey} + ${templateId}`);
+
+  return new Promise((resolve) => {
+    emailjs
+      .send(serviceId, templateId, email, {
+        publicKey: publicKey,
+      })
+      .then(() => {
+        console.log("success");
+        resolve(true);
+      })
+      .catch((e) => {
+        console.error(e);
+        resolve(false);
+      });
+  });
 }

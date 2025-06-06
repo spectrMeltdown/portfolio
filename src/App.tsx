@@ -11,6 +11,7 @@ import Projects from "./Projects.tsx";
 import Contact from "./Contact.tsx";
 import Footer from "./Footer.tsx";
 import { motion } from "motion/react";
+import Layout from "./Layout.tsx";
 
 function App() {
   useEffect(() => {
@@ -57,7 +58,7 @@ function App() {
   };
 
   return (
-    <>
+    <Layout>
       <div className="flex w-full justify-between">
         <h1 className="text-2xl font-bold">Willow Diamada</h1>
         <NavigationMenu>
@@ -66,7 +67,7 @@ function App() {
               <NavigationMenuLink href="#body">About</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href="#skills">Skills</NavigationMenuLink>
+              <NavigationMenuLink href="#body">Skills</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink href="#projects">Projects</NavigationMenuLink>
@@ -137,7 +138,7 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
-    </>
+    </Layout>
   );
 }
 
