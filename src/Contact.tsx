@@ -5,27 +5,45 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "./components/ui/input";
 import { Textarea } from "./components/ui/textarea";
+import { sendEmail } from "./lib/utils";
+import { contactSchema, type ContactFormData } from "./lib/types";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Loader2Icon } from "lucide-react";
+import {
+  faCheckCircle,
+  faXmarkCircle,
+} from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default Contact;
 
-const contactSchema = z.object({
-  name: z.string().min(2).max(100),
-  email: z.string().min(2).max(100),
-  message: z.string().min(2).max(500),
-});
-
 function Contact() {
-  const form = useForm<z.infer<typeof contactSchema>>({
+  const [isLoading, setIsLoading] = useState(false);
+  const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
       email: "",
       message: "",
+      time: new Date(),
     },
   });
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
+  async function onSubmit(values: z.infer<typeof contactSchema>) {
+    setIsLoading(true);
     console.log(`values are: ${Object.entries(values)}`);
+    const result = await sendEmail(values);
+    if (result) {
+      toast("Email sent! I'll respond as soon as I can!", {
+        icon: <FontAwesomeIcon icon={faCheckCircle} color="green" />,
+      });
+    } else {
+      toast("Sorry, an unknown error occured..", {
+        icon: <FontAwesomeIcon icon={faXmarkCircle} color="red" />,
+      });
+    }
+    setIsLoading(false);
   }
 
   return (
@@ -41,11 +59,25 @@ function Contact() {
             <br className="mb-3" />
             {"Let's Talk!"}
           </h2>
-          <Button size="lg">Submit</Button>
+          <Button
+            variant={isLoading ? "secondary" : "default"}
+            size="lg"
+            form="contactForm"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader2Icon className="animate-spin" /> {"Please wait"}
+              </>
+            ) : (
+              "Submit"
+            )}
+          </Button>
         </div>
         <div className="col-auto gap-y-3">
           <Form {...form}>
             <form
+              id="contactForm"
               onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col gap-y-3"
             >
