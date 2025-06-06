@@ -5,8 +5,8 @@ import {
   faDesktop,
   faTablet,
 } from "@fortawesome/free-solid-svg-icons";
-import Circle from "./components/ui/circle";
-import Line from "./components/ui/line";
+import Circle from "@/components/ui/circle";
+import Line from "@/components/ui/line";
 
 export default AboutMe;
 

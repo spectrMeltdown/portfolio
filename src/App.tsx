@@ -4,14 +4,14 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { Button } from "./components/ui/button.tsx";
-import AboutMe from "./AboutMe.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import AboutMe from "@/AboutMe.tsx";
 import { useEffect } from "react";
-import Projects from "./Projects.tsx";
-import Contact from "./Contact.tsx";
-import Footer from "./Footer.tsx";
+import Projects from "@/Projects.tsx";
+import Contact from "@/Contact.tsx";
+import Footer from "@/Footer.tsx";
 import { motion } from "motion/react";
-import Layout from "./Layout.tsx";
+import Layout from "@/Layout.tsx";
 
 function App() {
   useEffect(() => {
@@ -50,7 +50,7 @@ function App() {
 
   const downloadResume = (): void => {
     const link = document.createElement("a");
-    link.href = "src/assets/resume.pdf";
+    link.href = "@/assets/resume.pdf";
     link.download = "Resume - Willow Diamada, Developer";
     document.body.appendChild(link);
     link.click();
@@ -103,7 +103,7 @@ function App() {
         <div className="relative mb-[-2.5rem] h-100 w-100">
           <img
             className="h-100"
-            src="src/assets/me.webp"
+            src="@/assets/me.webp"
             alt="picture of me"
             height="50px"
           />

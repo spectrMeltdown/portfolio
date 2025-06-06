@@ -1,9 +1,9 @@
-import Line from "./components/ui/line";
-import Circle from "./components/ui/circle";
-import { type ProjectType } from "./lib/types";
-import Project from "./components/ui/project";
+import Line from "@/components/ui/line";
+import Circle from "@/components/ui/circle";
+import { type ProjectType } from "@/lib/types";
+import Project from "@/components/ui/project";
 import clsx from "clsx";
-import { projectPreviews } from "./lib/utils";
+import { projectPreviews } from "@/lib/utils";
 
 export default Projects;
 
