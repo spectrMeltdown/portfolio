@@ -1,12 +1,12 @@
-import { Button } from "./components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "./components/ui/form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Input } from "./components/ui/input";
-import { Textarea } from "./components/ui/textarea";
-import { sendEmail } from "./lib/utils";
-import { contactSchema, type ContactFormData } from "./lib/types";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { sendEmail } from "@/lib/utils";
+import { contactSchema, type ContactFormData } from "@/lib/types";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Loader2Icon } from "lucide-react";

@@ -11,7 +11,7 @@ export const projectPreviews = getProjPreviews();
 
 function getProjPreviews(): Record<string, string[]> {
   const previews = import.meta.glob<{ default: string }>(
-    "/src/assets/projects/**/*.{png,jpg,jpeg,webp}",
+    "@/assets/projects/**/*.{png,jpg,jpeg,webp}",
     { eager: true },
   );
   const result: Record<string, string[]> = {};
