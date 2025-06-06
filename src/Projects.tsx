@@ -3,7 +3,7 @@ import Circle from "./components/ui/circle";
 import { type ProjectType } from "./lib/types";
 import Project from "./components/ui/project";
 import clsx from "clsx";
-import { projectPreviews } from "/src/lib/utils";
+import { projectPreviews } from "src/lib/utils";
 
 export default Projects;
 
