@@ -94,9 +94,9 @@ function App() {
           </div>
           <h2 className="block text-5xl font-bold">Software Developer</h2>
           <div className="flex gap-2 px-5 py-10">
-            <Button className="" variant="outline">
-              Got a project?
-            </Button>
+            <a href="#contact">
+              <Button variant="outline">Got a project?</Button>
+            </a>
             <Button onClick={downloadResume}>My resume</Button>
           </div>
         </div>
