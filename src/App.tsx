@@ -12,6 +12,8 @@ import Contact from "@/Contact.tsx";
 import Footer from "@/Footer.tsx";
 import { motion } from "motion/react";
 import Layout from "@/Layout.tsx";
+import picMe from "@/assets/me.webp";
+import resume from "@/assets/resume.pdf";
 
 function App() {
   useEffect(() => {
@@ -50,7 +52,7 @@ function App() {
 
   const downloadResume = (): void => {
     const link = document.createElement("a");
-    link.href = "@/assets/resume.pdf";
+    link.href = resume;
     link.download = "Resume - Willow Diamada, Developer";
     document.body.appendChild(link);
     link.click();
@@ -103,7 +105,7 @@ function App() {
         <div className="relative mb-[-2.5rem] h-100 w-100">
           <img
             className="h-100"
-            src={"@/assets/me.webp"}
+            src={picMe}
             alt="picture of me"
             height="50px"
           />
