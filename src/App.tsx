@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import Projects from "./Projects.tsx";
 import Contact from "./Contact.tsx";
 import Footer from "./Footer.tsx";
+import { motion } from "motion/react";
 
 function App() {
   useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
     frontEnd: ["JavaScript", "HTML", "CSS", "React", "Tailwind", "Bootstrap"],
     backend: ["PHP"],
     crossPlatform: ["Flutter"],
-    database: ["MySQL", "Firestore"],
+    database: ["MySQL"],
     general: ["Git", "Github", "NodeJS", "Firebase", "Figma"],
   };
 
@@ -45,6 +46,15 @@ function App() {
       completed.push(rand);
     }
   }
+
+  const downloadResume = (): void => {
+    const link = document.createElement("a");
+    link.href = "/src/assets/resume.pdf";
+    link.download = "Resume - Willow Diamada, Developer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -68,13 +78,15 @@ function App() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div className="my-10 grid grid-cols-[auto_auto] gap-10">
+      <div className="my-10 grid grid-cols-[50%_50%] gap-10 self-center px-10">
         <div className="col">
           <h3 className="block pb-5 text-4xl font-bold">
             Hello <span className="text-6xl text-primary">.</span>
           </h3>
           <div className="flex pb-5 align-bottom">
-            {/* <div className={`${primary} absolute left-0 pt-4 font-extrabold`}>____________________</div> */}
+            <div className={`absolute left-0 pt-4 font-extrabold text-primary`}>
+              {"_".repeat(25)}
+            </div>
             <h3 className="block text-4xl font-extralight">
               &nbsp;&nbsp;&nbsp;&nbsp;I&apos;m Willow
             </h3>
@@ -84,19 +96,37 @@ function App() {
             <Button className="" variant="outline">
               Got a project?
             </Button>
-            <Button>My resume</Button>
+            <Button onClick={downloadResume}>My resume</Button>
           </div>
         </div>
-        <div className="col">
-          <p className="h-100% w-100%">{"< My face here >"}</p>
+        <div className="relative mb-[-2.5rem] h-100 w-100">
+          <img
+            className="h-100"
+            src="/src/assets/me.webp"
+            alt="picture of me"
+            height="50px"
+          />
+          {/* <div className="relative top-[-100%] z-[-1] h-[110%] w-[110%] rounded-full border-40 border-primary"></div> */}
+          {/* <div className="relative top-[-120%] right-[10%] z-[-1] h-[130%] w-[130%] rounded-t-full rounded-b-lg bg-primary opacity-30 blur-3xl"></div> */}
+          <motion.div
+            className="relative top-[-120%] right-[10%] z-[-1] h-[130%] w-[130%] rounded-t-full rounded-b-lg bg-primary opacity-30 blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
         </div>
       </div>
       <div className="mx-[-6.2rem] flex justify-center bg-gradient-to-r from-gray-800 to-gray-700 opacity-70">
-        <ul className="flex list-none gap-8 overflow-hidden py-5 text-2xl opacity-50">
+        <ul className="flex list-none gap-8 overflow-hidden py-7 opacity-50">
           {reshuffled.map((item, index) => {
             const key = `strip-item-${index}`;
             return (
-              <li key={key} id={key} className="text-lg">
+              <li key={key} id={key} className="font-mono text-xl">
                 {item}
               </li>
             );
