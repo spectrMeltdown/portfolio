@@ -5,6 +5,7 @@ import eslint from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/portfolio/",
   plugins: [tailwindcss(), eslint()],
   build: {
     sourcemap: false, // disables source maps entirely
