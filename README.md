@@ -1,6 +1,4 @@
-# Dev Portfolio Website
-
----
+# Portfolio Website
 
 This is my portfolio website I made that tells a bit about me and showcases my projects. Feel free to have a look.
 
