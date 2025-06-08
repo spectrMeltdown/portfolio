@@ -5,7 +5,7 @@ import { Button } from "./button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import Autoplay from "embla-carousel-autoplay";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import {
   Carousel,
   CarouselContent,
