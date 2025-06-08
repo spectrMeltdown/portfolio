@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button.tsx";
 import AboutMe from "@/app/AboutMe.tsx";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Projects from "@/app/Projects.tsx";
 import Contact from "@/app/Contact.tsx";
 import Footer from "@/app/Footer.tsx";
@@ -25,13 +25,13 @@ function App() {
     };
   }, []);
 
-  const skills = useRef({
-    frontEnd: ["JavaScript", "HTML", "CSS", "React", "Tailwind", "Bootstrap"],
-    backend: ["PHP"],
-    crossPlatform: ["Flutter"],
-    database: ["MySQL"],
-    general: ["Git", "Github", "NodeJS", "Firebase", "Figma"],
-  });
+  // const skills = useRef({
+  //   frontEnd: ["JavaScript", "HTML", "CSS", "React", "Tailwind", "Bootstrap"],
+  //   backend: ["PHP"],
+  //   crossPlatform: ["Flutter"],
+  //   database: ["MySQL"],
+  //   general: ["Git", "Github", "NodeJS", "Firebase", "Figma"],
+  // });
 
   function downloadResume(): void {
     const link = document.createElement("a");
