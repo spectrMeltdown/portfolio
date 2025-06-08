@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { ContactFormData } from "./types";
+import type { ContactFormData } from "@/types";
 import * as emailjs from "@emailjs/browser";
 
 export function cn(...inputs: ClassValue[]) {
