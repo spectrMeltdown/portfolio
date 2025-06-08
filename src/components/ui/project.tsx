@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import type React from "react";
-import { type ProjectType } from "@/lib/types";
+import { type ProjectType } from "@/types";
 import { Button } from "./button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import Autoplay from "embla-carousel-autoplay";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./carousel";
+import { motion } from "motion/react";
 
 export default function Project({
   project,
@@ -30,15 +31,20 @@ export default function Project({
   return (
     <div
       className={clsx(
-        "flex w-[80rem] gap-x-[5rem] gap-y-10 px-10 py-10",
-        isEven ? "flex-row" : "flex-row-reverse",
+        "grid-rows grid place-content-center place-items-center gap-x-20 gap-y-20 px-10 py-10 lg:grid-cols-[40%_40%]",
         className,
       )}
       {...props}
     >
-      <div className="flex w-[40rem] flex-col gap-2">
+      <motion.div
+        className="flex flex-col gap-2"
+        initial={{ opacity: 0, y: 70 }}
+        transition={{ duration: 0.6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         <h2 className="pb-4 text-2xl font-bold">{project.name}</h2>
-        <div className="row flex gap-x-2 pb-4">
+        <div className="row flex flex-wrap gap-2 pb-4">
           {project.tech.map((e) => (
             <Squicle key={e}>{e}</Squicle>
           ))}
@@ -52,15 +58,24 @@ export default function Project({
           )}
           {project.link && (
             <a href={project.link} target="_blank" rel="noreferrer">
-              <Button variant="link" className="text-white">
+              <Button variant="outline" className="text-white">
                 <span>View project</span>
                 <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
               </Button>
             </a>
           )}
         </div>
-      </div>
-      <div className="h-80 w-[40rem] text-center">
+      </motion.div>
+      <motion.div
+        className={clsx(
+          "h-80 text-center",
+          isEven ? "md:order-1" : "md:order-2",
+        )}
+        initial={{ opacity: 0, y: 70 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         {project.previewUrls.length <= 1 ? (
           <img
             className="h-full w-full border-2 border-white object-cover"
@@ -68,27 +83,30 @@ export default function Project({
             alt={"No preview available"}
           />
         ) : (
-          <Carousel
-            plugins={[plugin.current]}
-            className="h-full w-full border-2 border-white object-cover"
-          >
-            <CarouselContent>
-              {project.previewUrls.map((v, i) => (
-                <CarouselItem key={clsx(v, i)}>
-                  <img
-                    className="h-full w-full border-2 border-white object-cover"
-                    src={v}
-                    alt={"No preview available"}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselNext />
-            <CarouselPrevious />
-          </Carousel>
+          <div className="flex flex-col justify-center">
+            <Carousel plugins={[plugin.current]}>
+              <CarouselContent>
+                {project.previewUrls.map((v, i) => (
+                  <CarouselItem
+                    key={clsx(v, i)}
+                    className="flex flex-col justify-center"
+                  >
+                    <img
+                      className="h-full w-full object-cover"
+                      src={v}
+                      alt={"No preview available"}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselNext className="hidden md:flex" />
+              <CarouselPrevious className="hidden md:flex" />
+            </Carousel>
+            <div className="border-2 border-white"></div>
+          </div>
         )}
         {/* <figcaption></figcaption> */}
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -1,14 +1,15 @@
 import Line from "@/components/ui/line";
 import Circle from "@/components/ui/circle";
-import { type ProjectType } from "@/lib/types";
 import Project from "@/components/ui/project";
 import clsx from "clsx";
-import { projectPreviews } from "@/lib/utils";
+import { projectPreviews } from "@/utils";
+import { useRef } from "react";
+import { motion } from "motion/react";
 
 export default Projects;
 
 function Projects() {
-  const projects: ProjectType[] = [
+  const projects = useRef([
     {
       name: "MABISA",
       description:
@@ -36,15 +37,30 @@ function Projects() {
       link: "https://marathon-tracking-device.web.app/",
       ghLink: "",
     },
-  ];
+  ]);
   return (
-    <div className="flex flex-col items-center justify-center" id="projects">
-      <h2 className="mb-5 text-5xl font-bold">Projects</h2>
-      <Line isFlex="nonFlex" />
-      <Circle className="mr-[0.31rem]" />
-      {projects.map((v, i) => (
-        <Project key={clsx(v, i)} project={v} index={i} />
-      ))}
+    <div className="my-10 rounded-2xl bg-gray-800 py-20 shadow-2xl">
+      <div className="flex flex-col items-center">
+        <motion.h2
+          className="mb-5 text-5xl font-bold"
+          initial={{ opacity: 0, y: 70 }}
+          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          Projects
+        </motion.h2>
+        <Line isFlex="nonFlex" />
+        <Circle className="mr-[0.31rem]" />
+      </div>
+      <div
+        className="flex flex-col items-center gap-y-10 md:gap-y-20"
+        id="projects"
+      >
+        {projects.current.map((v, i) => (
+          <Project key={clsx(v, i)} project={v} index={i} />
+        ))}
+      </div>
     </div>
   );
 }
