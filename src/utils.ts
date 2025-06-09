@@ -49,3 +49,6 @@ export async function sendEmail(email: ContactFormData): Promise<boolean> {
       });
   });
 }
+
+export const isTouchDevice = () =>
+  window.matchMedia("(pointer: coarse)").matches;
