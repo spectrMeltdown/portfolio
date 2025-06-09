@@ -25,14 +25,6 @@ function App() {
     };
   }, []);
 
-  // const skills = useRef({
-  //   frontEnd: ["JavaScript", "HTML", "CSS", "React", "Tailwind", "Bootstrap"],
-  //   backend: ["PHP"],
-  //   crossPlatform: ["Flutter"],
-  //   database: ["MySQL"],
-  //   general: ["Git", "Github", "NodeJS", "Firebase", "Figma"],
-  // });
-
   function downloadResume(): void {
     const link = document.createElement("a");
     link.href = resume;
@@ -43,80 +35,74 @@ function App() {
   }
 
   return (
-    <Layout>
-      <motion.div
-        className="flex w-full justify-between"
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.9, delay: 1 }}
-      >
-        <h1 className="text-2xl font-bold">Willow Diamada</h1>
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#about">About</NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#skills">Skills</NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#projects">Projects</NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#contact">Contact</NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </motion.div>
-      <div className="grid h-[90vh] items-center justify-start">
-        <div className="lg:ml-30">
-          <motion.h3
-            className="block pb-5 text-4xl font-bold"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{ duration: 0.6 }}
-          >
-            {"Hello, I'm"}
-          </motion.h3>
-          <div className="flex pb-5 align-bottom">
+    <>
+      <Layout>
+        <motion.div
+          className="flex w-full justify-between"
+          initial={{ y: -80 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.9, delay: 1 }}
+        >
+          <h1 className="text-2xl font-bold">Willow Diamada</h1>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#about">About</NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#skills">Skills</NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#projects">
+                  Projects
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#contact">Contact</NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </motion.div>
+        <div className="grid h-[90vh] items-center justify-start">
+          <div className="lg:ml-30">
             <motion.h3
-              className="block text-6xl font-extrabold"
+              className="block pb-5 text-4xl font-bold"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              {"Hello, I'm Willow"}
+            </motion.h3>
+            <motion.h2
+              className="block text-5xl font-extralight"
               initial={{ opacity: 0, x: -70 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              transition={{ duration: 1.1, delay: 0.6 }}
             >
-              Willow Diamada
-            </motion.h3>
+              A Software Developer
+            </motion.h2>
+            <motion.div
+              className="flex gap-2 py-10"
+              initial={{ opacity: 0, x: -70 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+            >
+              <a href="#contact">
+                <Button variant="outline">Got a project?</Button>
+              </a>
+              <Button onClick={downloadResume}>My resume</Button>
+            </motion.div>
           </div>
-          <motion.h2
-            className="block text-5xl font-extralight"
-            initial={{ opacity: 0, x: -70 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.1, delay: 0.6 }}
-          >
-            Software Developer
-          </motion.h2>
-          <motion.div
-            className="flex gap-2 py-10"
-            initial={{ opacity: 0, x: -70 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-          >
-            <a href="#contact">
-              <Button variant="outline">Got a project?</Button>
-            </a>
-            <Button onClick={downloadResume}>My resume</Button>
-          </motion.div>
         </div>
-      </div>
-      <AboutMe />
-      <Projects />
-      <Contact />
-      <Footer />
-    </Layout>
+        <AboutMe />
+        <Projects />
+        <Contact />
+        <Footer />
+      </Layout>
+    </>
   );
 }
 
