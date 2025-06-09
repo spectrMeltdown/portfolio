@@ -79,7 +79,7 @@ export default function BgParticles() {
             default: OutMode.out,
           },
           random: false,
-          speed: 6,
+          speed: 1,
           straight: false,
         },
         number: {
