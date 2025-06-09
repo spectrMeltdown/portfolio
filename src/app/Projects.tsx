@@ -6,9 +6,7 @@ import { projectPreviews } from "@/utils";
 import { useRef } from "react";
 import { motion } from "motion/react";
 
-export default Projects;
-
-function Projects() {
+export default function Projects() {
   const projects = useRef([
     {
       name: "MABISA",
