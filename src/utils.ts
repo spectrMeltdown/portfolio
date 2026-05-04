@@ -32,15 +32,12 @@ export async function sendEmail(email: ContactFormData): Promise<boolean> {
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-  console.log(`${serviceId} + ${publicKey} + ${templateId}`);
-
   return new Promise((resolve) => {
     emailjs
       .send(serviceId, templateId, email, {
         publicKey: publicKey,
       })
       .then(() => {
-        console.log("success");
         resolve(true);
       })
       .catch((e) => {

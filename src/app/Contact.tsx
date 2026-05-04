@@ -33,7 +33,6 @@ function Contact() {
 
   async function onSubmit(values: z.infer<typeof contactSchema>) {
     setIsLoading(true);
-    console.log(`values are: ${Object.entries(values)}`);
     const result = await sendEmail(values);
     if (result) {
       toast("Email sent! I'll respond as soon as I can!", {
