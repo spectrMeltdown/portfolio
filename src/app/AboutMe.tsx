@@ -32,13 +32,20 @@ function AboutMe() {
         id="about"
       >
         <h2 className="mb-5 text-4xl font-bold">About me</h2>
+        <p className="pb-4">
+          My passion for software development started from my curiosity about
+          how systems work, from OS customization to hardware tinkering. That
+          curiosity grew into a focus on building practical software that
+          solves real operational problems.
+        </p>
+        <p className="pb-4">
+          I graduated Cum Laude with a Bachelor of Science in Information
+          Technology (2020-2025), and I enjoy translating business workflows
+          into reliable digital processes.
+        </p>
         <p>
-          My passion for software development started from my desire to
-          customize my home computer. I loved tinkering with OS and underlying
-          hardware when I was young. Later in life, I developed a passion for
-          learning the language and logic of the computer, solving problems and
-          figuring out how to express that though coding and software
-          development.
+          I currently focus on web, mobile, and ERP-driven development,
+          especially projects where process automation and usability matter.
         </p>
       </motion.div>
     </div>
