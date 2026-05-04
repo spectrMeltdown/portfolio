@@ -5,7 +5,7 @@ import { Button } from "./button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import Autoplay from "embla-carousel-autoplay";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -35,6 +35,16 @@ export default function Project({
     }),
   );
 
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent): void {
+      if (e.key === "Escape") setOpen(false);
+    }
+    if (open) window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
     <>
       <div
@@ -55,22 +65,48 @@ export default function Project({
           viewport={{ once: true }}
         >
           <h2 className="pb-4 text-2xl font-bold">{project.name}</h2>
+          {project.status && (
+            <p className="pb-3 text-sm font-semibold text-gray-300">
+              Status: {project.status}
+            </p>
+          )}
           <div className="row flex flex-wrap gap-2 pb-4">
             {project.tech.map((e) => (
               <Squicle key={e}>{e}</Squicle>
             ))}
           </div>
-          {project.description}
+          <div className="space-y-3">
+            {project.problem && (
+              <p>
+                <span className="font-semibold text-primary">Problem:</span>{" "}
+                {project.problem}
+              </p>
+            )}
+            {project.contribution && (
+              <p>
+                <span className="font-semibold text-primary">
+                  Contribution:
+                </span>{" "}
+                {project.contribution}
+              </p>
+            )}
+            {project.outcome && (
+              <p>
+                <span className="font-semibold text-primary">Outcome:</span>{" "}
+                {project.outcome}
+              </p>
+            )}
+          </div>
           <div className="flex gap-3 pt-5">
             {project.ghLink && (
               <a href={project.ghLink} target="_blank" rel="noreferrer">
-                <Button>View Github</Button>
+                <Button>Source Code</Button>
               </a>
             )}
             {project.link && (
               <a href={project.link} target="_blank" rel="noreferrer">
                 <Button variant="outline" className="text-white">
-                  <span>View project</span>
+                  <span>Live Demo</span>
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                 </Button>
               </a>
@@ -88,7 +124,7 @@ export default function Project({
             <img
               className="h-full w-full border-2 border-white object-cover"
               src={project.previewUrls[0]}
-              alt={"No preview available"}
+              alt={`${project.name} preview`}
             />
           ) : (
             <div className="flex flex-col justify-center">
@@ -109,7 +145,7 @@ export default function Project({
                       <CarouselItem key={clsx(v, i, "dialog")}>
                         <img
                           src={v}
-                          alt=""
+                          alt={`${project.name} preview ${i + 1}`}
                           className="cursor-pointer"
                           onClick={() => {
                             setActiveImg(v);
@@ -135,10 +171,22 @@ export default function Project({
           onClick={() => {
             setOpen(false);
           }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${project.name} preview dialog`}
         >
+          <button
+            className="absolute top-5 right-5 rounded-md bg-gray-900 px-3 py-1 text-sm"
+            onClick={() => {
+              setOpen(false);
+            }}
+            aria-label="Close preview"
+          >
+            Close
+          </button>
           <img
             src={activeImg}
-            alt=""
+            alt={`${project.name} enlarged preview`}
             className="max-h-full max-w-full object-contain"
           />
           <p className="absolute top-5 text-2xl text-shadow-black/20 text-shadow-sm">

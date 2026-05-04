@@ -10,8 +10,13 @@ export default function Projects() {
   const projects = useRef([
     {
       name: "MABISA",
-      description:
-        "A document submission and compliance tracking system for Aloran's 38 barangays, built to support DILG's SGLGB and ARTA programs. Enables barangay officials to upload governance documents and allows DILG reviewers to validate submissions. I contributed as a developer, helping implement the document upload workflow, role-based access, and reporting features.",
+      problem:
+        "Barangays needed a centralized way to submit and track governance compliance documents for DILG programs.",
+      contribution:
+        "Implemented document upload flows, role-based access, and reporting features as part of the development team.",
+      outcome:
+        "Enabled structured submissions and streamlined reviewer validation across Aloran's 38 barangays.",
+      status: "Production",
       tech: ["HTML", "CSS", "Bootstrap", "JavaScript", "PHP", "MySQL"],
       previewUrls: projectPreviews["mabisa"],
       link: "https://mabisa-aloran.com",
@@ -19,8 +24,13 @@ export default function Projects() {
     },
     {
       name: "Block-Logic",
-      description:
-        "A visual block-based programming game on mobile designed to aid beginners and novices in programming to increase their understanding of how it all works, and to have fun as well! App is available on Android only. Also has a web-based admin portal for managing the platform.",
+      problem:
+        "Programming beginners need a friendlier way to understand logic without starting from syntax-heavy coding.",
+      contribution:
+        "Built a visual block-based Android learning game with a companion web admin portal.",
+      outcome:
+        "Delivered an interactive platform that makes core programming concepts more approachable for early learners.",
+      status: "Production",
       tech: ["Flutter", "Firebase"],
       previewUrls: projectPreviews["block-logic"],
       link: "https://block-logic.site",
@@ -28,8 +38,13 @@ export default function Projects() {
     },
     {
       name: "Marathon Tracker",
-      description:
-        "An admin portal for tracking and managing Marathon Tracker devices. You can create your own organization as needed.",
+      problem:
+        "Device and organization tracking required a centralized interface for administration and monitoring.",
+      contribution:
+        "Developed an admin portal for managing tracker devices and organization-level setup.",
+      outcome:
+        "Improved visibility and control for device management workflows from a single web interface.",
+      status: "Production",
       tech: ["Flutter", "Firebase"],
       previewUrls: projectPreviews["marathon-tracker"],
       link: "https://marathon-tracking-device.web.app/",

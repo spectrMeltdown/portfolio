@@ -2,11 +2,14 @@ import z from "zod";
 
 export interface ProjectType {
   name: string;
-  description: string;
   tech: string[];
   previewUrls: string[];
-  link: string;
-  ghLink: string;
+  link?: string;
+  ghLink?: string;
+  problem?: string;
+  contribution?: string;
+  outcome?: string;
+  status?: string;
 }
 
 export const contactSchema = z.object({
