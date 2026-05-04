@@ -20,18 +20,86 @@ export default function BgParticles() {
   }, []);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const lastScrollRef = useRef({ y: 0, t: 0 });
+  const blurRef = useRef(0);
+  const rafRef = useRef(0);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (wrapperRef.current) {
-        // adjust parallax strength here
-        wrapperRef.current.style.transform = `translateY(-${scrollY * 0.3}px)`;
+    if (!init) return;
+
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const parallaxStrength = 0.3;
+    const blurMaxPx = 2.5;
+    const blurSpeedScale = 480;
+    const blurDecay = 0.88;
+    const blurFloor = 0.02;
+
+    lastScrollRef.current = {
+      y: window.scrollY,
+      t: performance.now(),
+    };
+
+    const tickDecay = () => {
+      const node = wrapperRef.current;
+      if (!node || reduceMotion.matches) return;
+
+      blurRef.current *= blurDecay;
+      if (blurRef.current > blurFloor) {
+        node.style.filter = `blur(${blurRef.current.toFixed(2)}px)`;
+        rafRef.current = requestAnimationFrame(tickDecay);
+      } else {
+        blurRef.current = 0;
+        node.style.filter = "";
+        rafRef.current = 0;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const node = wrapperRef.current;
+      if (!node) return;
+
+      node.style.transform = `translateY(-${scrollY * parallaxStrength}px)`;
+
+      if (reduceMotion.matches) {
+        node.style.filter = "";
+        blurRef.current = 0;
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = 0;
+        lastScrollRef.current = { y: scrollY, t: performance.now() };
+        return;
+      }
+
+      const now = performance.now();
+      const { y: lastY, t: lastT } = lastScrollRef.current;
+      const dt = Math.max(1, now - lastT);
+      const speedPxPerMs = Math.abs(scrollY - lastY) / dt;
+      lastScrollRef.current = { y: scrollY, t: now };
+
+      const instantBlur = Math.min(blurMaxPx, speedPxPerMs * blurSpeedScale);
+      blurRef.current = Math.max(blurRef.current, instantBlur);
+      node.style.filter = `blur(${blurRef.current.toFixed(2)}px)`;
+
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(tickDecay);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
+      blurRef.current = 0;
+      if (wrapperRef.current) {
+        wrapperRef.current.style.filter = "";
+      }
+    };
+  }, [init]);
 
   const options: ISourceOptions = useMemo(
     () => ({
