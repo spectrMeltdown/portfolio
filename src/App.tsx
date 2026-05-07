@@ -11,7 +11,7 @@ import Projects from "@/app/Projects.tsx";
 import Contact from "@/app/Contact.tsx";
 import Footer from "@/app/Footer.tsx";
 import Layout from "@/app/Layout.tsx";
-import resume from "@/assets/Willow_Diamada_resume.pdf";
+import resume from "@/assets/Resume_Willow_Diamada.pdf";
 import { motion } from "motion/react";
 import Experience from "@/app/Experience";
 
@@ -29,7 +29,7 @@ function App() {
   function downloadResume(): void {
     const link = document.createElement("a");
     link.href = resume;
-    link.download = "Resume - Willow Diamada, Developer";
+    link.download = "Resume - Willow Diamada";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
