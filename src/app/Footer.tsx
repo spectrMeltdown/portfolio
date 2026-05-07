@@ -29,7 +29,7 @@ function Footer() {
     },
     {
       icon: faLinkedin,
-      link: "https://www.linkedin.com/in/willow-diamada-2b1772369",
+      link: "https://www.linkedin.com/in/willow-diamada",
       color: "hover:text-blue-300  hover:text-shadow-blue-300",
     },
   ];

@@ -39,8 +39,8 @@ function AboutMe() {
           solves real operational problems.
         </p>
         <p className="pb-4">
-          I graduated Cum Laude with a Bachelor of Science in Information
-          Technology (2020-2025), and I enjoy translating business workflows
+          I graduated Cum laude with a Bachelor of Science in Information
+          Technology, and I enjoy translating business workflows
           into reliable digital processes.
         </p>
         <p>

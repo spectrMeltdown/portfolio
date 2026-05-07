@@ -20,7 +20,7 @@ export default function Projects() {
       tech: ["HTML", "CSS", "Bootstrap", "JavaScript", "PHP", "MySQL"],
       previewUrls: projectPreviews["mabisa"],
       link: "https://mabisa-aloran.com",
-      ghLink: "https://github.com/badiang/mabisa2.0",
+      ghLink: "https://github.com/spectrMeltdown/mabisa2.0",
     },
     {
       name: "Block-Logic",

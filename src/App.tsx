@@ -130,7 +130,7 @@ function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, delay: 0.8 }}
             >
-              Cum Laude BSIT graduate (2020-2025) building web, mobile, and
+              Passionate developer building web, mobile, and
               Odoo ERP solutions that transform real business workflows into
               scalable digital processes.
             </motion.p>
