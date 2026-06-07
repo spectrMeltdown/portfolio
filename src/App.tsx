@@ -130,9 +130,8 @@ function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, delay: 0.8 }}
             >
-              Passionate developer building web, mobile, and
-              Odoo ERP solutions that transform real business workflows into
-              scalable digital processes.
+              Results-driven individual, passionate about turning complex
+              business workflows into reliable, scalable systems.
             </motion.p>
             <motion.div
               className="flex gap-2 py-10"
