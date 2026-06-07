@@ -1,4 +1,4 @@
 onlyBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - '@tsparticles/engine'
+  - "@tailwindcss/oxide"
+  - "@tsparticles/engine"
   - esbuild

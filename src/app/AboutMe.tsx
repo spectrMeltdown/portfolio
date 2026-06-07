@@ -35,12 +35,13 @@ function AboutMe() {
         <p className="pb-4">
           My passion for software development started from my curiosity about
           how systems work, from OS customization to hardware tinkering. That
-          curiosity grew into a focus on building practical software that
-          solves real operational problems.
+          curiosity grew into a focus on building practical software that solves
+          real operational problems.
         </p>
         <p className="pb-4">
-          I'm the kind of developer who asks how things work in practice before writing code
-     — then builds software that fits how teams operate day to day.
+          I'm the kind of developer who asks how things work in practice before
+          writing code — then builds software that fits how teams operate day to
+          day.
         </p>
         <p>
           Currently, I focus on web, mobile, and ERP-driven development,
