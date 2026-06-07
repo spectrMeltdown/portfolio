@@ -39,12 +39,11 @@ function AboutMe() {
           solves real operational problems.
         </p>
         <p className="pb-4">
-          I graduated Cum laude with a Bachelor of Science in Information
-          Technology, and I enjoy translating business workflows
-          into reliable digital processes.
+          I'm the kind of developer who asks how things work in practice before writing code
+     — then builds software that fits how teams operate day to day.
         </p>
         <p>
-          I currently focus on web, mobile, and ERP-driven development,
+          Currently, I focus on web, mobile, and ERP-driven development,
           especially projects where process automation and usability matter.
         </p>
       </motion.div>
